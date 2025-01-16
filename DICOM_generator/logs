@@ -1,0 +1,10 @@
+2024-12-10 17:47:27,013 - ERROR - Error processing DICOM file case2\44_r9_1-28.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,027 - ERROR - Error processing DICOM file case2\57_r6_1-51.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,045 - ERROR - Error processing DICOM file case2\24_r7_1-155.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,059 - ERROR - Error processing DICOM file case2\63_r9_1-17.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,075 - ERROR - Error processing DICOM file case2\98_r0_1-17.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,093 - ERROR - Error processing DICOM file case2\78_r5_1-32.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,110 - ERROR - Error processing DICOM file case2\36_r1_1-53.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,124 - ERROR - Error processing DICOM file case2\79_r2_1-53.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,137 - ERROR - Error processing DICOM file case2\91_r2_1-237.dcm: Cannot choose from an empty sequence
+2024-12-10 17:47:27,152 - ERROR - Error processing DICOM file case2\90_r5_1-53.dcm: Cannot choose from an empty sequence
