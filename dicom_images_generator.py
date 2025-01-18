@@ -184,7 +184,29 @@ class DICOMImageGenerator:
             img = Image.fromarray(pixel_array)
             
             # Prepare text overlay
-            text = f"Patient: {ds.PatientName}\nID: {ds.PatientID}\nStudyDate: {ds.StudyDate}"
+            # text = f"Patient: {ds.PatientName}\nID: {ds.PatientID}\nStudyDate: {ds.StudyDate}"
+
+            attributes = [
+                ("Study Date", ds.StudyDate),
+                ("Series Date", ds.SeriesDate),
+                ("Acquisition Date", ds.AcquisitionDate),
+                ("Content Date", ds.ContentDate),
+                ("Study Time", ds.StudyTime),
+                ("Acquisition Time", ds.AcquisitionTime),
+                ("Content Time", ds.ContentTime),
+                ("Accession Number", ds.AccessionNumber),
+                ("Referring Physicians Name", ds.ReferringPhysicianName),
+                ("Patient Name", ds.PatientName),
+                ("Patient ID", ds.PatientID),
+                ("Study ID", ds.StudyID),
+            ]
+
+            selected_attributes = random.sample(attributes, 3)
+
+            text = "\n".join([f"{name}: {value}" for name, value in selected_attributes])
+
+            print([f"{name}: {value}" for name, value in selected_attributes])
+
             font_path = random.choice(fonts)
             font_size_max = self.get_max_font_size(text, font_path, img.width, img.height)
             font_size = random.randint(7, font_size_max)
@@ -251,6 +273,6 @@ class DICOMImageGenerator:
             dicom_file = random.choice(dicom_files)
             self.process_dicom_to_png(dicom_file, self.output_folder, self.fonts, unique_suffixes[i])
 
-dc = DICOMImageGenerator(r"C:\Users\olakr\OneDrive\Pulpit\DICOM_generator\case2", r"C:\Users\olakr\OneDrive\Pulpit\DICOM_generator\ouput", r"C:\Users\olakr\OneDrive\Pulpit\DICOM_generator\fonts", "logs")
+dc = DICOMImageGenerator(r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\case2", r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\ouput2", r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\fonts", "logs")
 
-dc.generate_images(200)
+dc.generate_images(50)
