@@ -7,6 +7,7 @@ import shutil
 import logging
 # from utils import dicom_utils
 import time
+import csv
 
 """
 DICOM Image Generator (CAISE)
@@ -156,6 +157,41 @@ class DICOMImageGenerator:
             logging.debug("Applied Gaussian blur with radius: %.2f", blur_radius)
             return blurred_image
         return text_image
+    
+    def save_dicom_attributes_to_tsv(self, ds, output_tsv_file="dicom_data.tsv"):
+
+        tags_to_check = [
+            ("Study Date", 'StudyDate'),
+            ("Series Date", 'SeriesDate'),
+            ("Acquisition Date", 'AcquisitionDate'),
+            ("Content Date", 'ContentDate'),
+            ("Study Time", 'StudyTime'),
+            ("Acquisition Time", 'AcquisitionTime'),
+            ("Content Time", 'ContentTime'),
+            ("Accession Number", 'AccessionNumber'),
+            ("Referring Physicians Name", 'ReferringPhysicianName'),
+            ("Patient Name", 'PatientName'),
+            ("Patient ID", 'PatientID'),
+            ("Study ID", 'StudyID'),
+        ]
+
+        attributes_to_save = []
+        for name, tag in tags_to_check:
+            if tag in ds:
+                attributes_to_save.append((name, getattr(ds, tag)))
+
+        if attributes_to_save:
+            with open(output_tsv_file, mode='a', newline='') as file:
+                writer = csv.writer(file, delimiter='\t')
+                if file.tell() == 0:
+                    writer.writerow(["TAGS_NAME", "TAGS_VALUE"])  # Nagłówki kolumn
+
+                writer.writerows(attributes_to_save)  # Zapisujemy dostępne atrybuty
+
+            print(f"Dane zapisano do {output_tsv_file}")
+        else:
+            print("Brak dostępnych atrybutów do zapisania.")
+
 
     def process_dicom_to_png(self, dicom_file, output_folder, fonts, unique_suffix):
         """
@@ -172,6 +208,7 @@ class DICOMImageGenerator:
             ds = pydicom.dcmread(dicom_file)
             pixel_array = ds.pixel_array
 
+            # self.save_dicom_attributes_to_tsv(ds)
             # Apply rescaling if intercept and slope are available
             intercept = ds.RescaleIntercept if 'RescaleIntercept' in ds else 0
             slope = ds.RescaleSlope if 'RescaleSlope' in ds else 1
@@ -201,12 +238,38 @@ class DICOMImageGenerator:
                 ("Study ID", ds.StudyID),
             ]
 
-            selected_attributes = random.sample(attributes, 3)
 
+            normal_attributes = [
+            ("Specific Character Set", "SpecificCharacterSet"),
+            ("Image Type", "ImageType"),
+            ("Instance Creation Date", "InstanceCreationDate"),
+            ("Modality", "Modality"),
+            ("Manufacturer", "Manufacturer"),
+            ("Study Description", "StudyDescription"),
+            ("Series Description", "SeriesDescription"),
+            ("Manufacturer's Model Name", "ManufacturerModelName"),
+            ("Irradiation Event UID", "IrradiationEventUID"),
+            ("Patient Identity Removed", "PatientIdentityRemoved"),
+            ("De-identification Method", "DeidentificationMethod"),
+            ("Private Creator", "PrivateCreator"),
+        ]
+
+            # Safely extract attributes
+            extracted_attributes = []
+            for name, tag in normal_attributes:
+                value = getattr(ds, tag, None)
+                if value is not None:
+                    extracted_attributes.append((name, value))
+
+            # Select a subset of attributes to display
+            if len(extracted_attributes) < 3:
+                logging.warning("Not enough attributes to display for %s", dicom_file)
+
+            selected_attributes = random.sample(extracted_attributes, min(3, len(extracted_attributes)))
             text = "\n".join([f"{name}: {value}" for name, value in selected_attributes])
 
-            print([f"{name}: {value}" for name, value in selected_attributes])
 
+            # Render text overlay
             font_path = random.choice(fonts)
             font_size_max = self.get_max_font_size(text, font_path, img.width, img.height)
             font_size = random.randint(7, font_size_max)
@@ -273,6 +336,6 @@ class DICOMImageGenerator:
             dicom_file = random.choice(dicom_files)
             self.process_dicom_to_png(dicom_file, self.output_folder, self.fonts, unique_suffixes[i])
 
-dc = DICOMImageGenerator(r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\case2", r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\ouput2", r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\fonts", "logs")
+dc = DICOMImageGenerator(r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\case2", r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\normal_output", r"C:\Users\olakr\OneDrive\Pulpit\WK_projekt\private_data_detection_on_DICOM_images\fonts", "logs")
 
-dc.generate_images(50)
+dc.generate_images(20)

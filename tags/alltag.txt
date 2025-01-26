@@ -1,0 +1,77 @@
+Tag: (0008,0005), Name: Specific Character Set
+Tag: (0008,0008), Name: Image Type
+Tag: (0008,0012), Name: Instance Creation Date
+Tag: (0008,0016), Name: SOP Class UID
+Tag: (0008,0018), Name: SOP Instance UID
+Tag: (0008,0060), Name: Modality
+Tag: (0008,0070), Name: Manufacturer
+Tag: (0008,1030), Name: Study Description
+Tag: (0008,103E), Name: Series Description
+Tag: (0008,1090), Name: Manufacturer's Model Name
+Tag: (0008,1111), Name: Referenced Performed Procedure Step Sequence
+Tag: (0008,1140), Name: Referenced Image Sequence
+Tag: (0008,3010), Name: Irradiation Event UID
+Tag: (0012,0062), Name: Patient Identity Removed
+Tag: (0012,0063), Name: De-identification Method
+Tag: (0012,0064), Name: De-identification Method Code Sequence
+Tag: (0013,0010), Name: Private Creator
+Tag: (0013,1010), Name: Private tag data
+Tag: (0013,1013), Name: Private tag data
+Tag: (0018,0015), Name: Body Part Examined
+Tag: (0018,0022), Name: Scan Options
+Tag: (0018,0050), Name: Slice Thickness
+Tag: (0018,0060), Name: KVP
+Tag: (0018,0088), Name: Spacing Between Slices
+Tag: (0018,0090), Name: Data Collection Diameter
+Tag: (0018,1020), Name: Software Versions
+Tag: (0018,1030), Name: Protocol Name
+Tag: (0018,1100), Name: Reconstruction Diameter
+Tag: (0018,1110), Name: Distance Source to Detector
+Tag: (0018,1111), Name: Distance Source to Patient
+Tag: (0018,1120), Name: Gantry/Detector Tilt
+Tag: (0018,1130), Name: Table Height
+Tag: (0018,1151), Name: X-Ray Tube Current
+Tag: (0018,1152), Name: Exposure
+Tag: (0018,1160), Name: Filter Type
+Tag: (0018,1210), Name: Convolution Kernel
+Tag: (0018,5100), Name: Patient Position
+Tag: (0018,9302), Name: Acquisition Type
+Tag: (0018,9305), Name: Revolution Time
+Tag: (0018,9306), Name: Single Collimation Width
+Tag: (0018,9307), Name: Total Collimation Width
+Tag: (0018,9309), Name: Table Speed
+Tag: (0018,9310), Name: Table Feed per Rotation
+Tag: (0018,9311), Name: Spiral Pitch Factor
+Tag: (0018,9323), Name: Exposure Modulation Type
+Tag: (0018,9324), Name: Estimated Dose Saving
+Tag: (0018,9345), Name: CTDIvol
+Tag: (0020,000D), Name: Study Instance UID
+Tag: (0020,000E), Name: Series Instance UID
+Tag: (0020,0011), Name: Series Number
+Tag: (0020,0012), Name: Acquisition Number
+Tag: (0020,0013), Name: Instance Number
+Tag: (0020,0032), Name: Image Position (Patient)
+Tag: (0020,0037), Name: Image Orientation (Patient)
+Tag: (0020,0052), Name: Frame of Reference UID
+Tag: (0020,1040), Name: Position Reference Indicator
+Tag: (0020,1041), Name: Slice Location
+Tag: (0020,4000), Name: Image Comments
+Tag: (0028,0002), Name: Samples per Pixel
+Tag: (0028,0004), Name: Photometric Interpretation
+Tag: (0028,0010), Name: Rows
+Tag: (0028,0011), Name: Columns
+Tag: (0028,0030), Name: Pixel Spacing
+Tag: (0028,0100), Name: Bits Allocated
+Tag: (0028,0101), Name: Bits Stored
+Tag: (0028,0102), Name: High Bit
+Tag: (0028,0103), Name: Pixel Representation
+Tag: (0028,0303), Name: Longitudinal Temporal Information Modified
+Tag: (0028,1050), Name: Window Center
+Tag: (0028,1051), Name: Window Width
+Tag: (0028,1052), Name: Rescale Intercept
+Tag: (0028,1053), Name: Rescale Slope
+Tag: (00E1,0010), Name: Private Creator
+Tag: (01F1,0010), Name: Private Creator
+Tag: (01F7,0010), Name: Private Creator
+Tag: (07A1,0010), Name: Private Creator
+Tag: (7FE0,0010), Name: Pixel Data
